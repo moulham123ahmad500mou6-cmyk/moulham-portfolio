@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ملهم أحمد | Web & App Development</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg-color: #0b0914;
+            --card-bg: rgba(22, 19, 38, 0.7);
+            --primary: #8a2be2;
+            --secondary: #00d2ff;
+            --accent: #50c878;
+            --text-main: #ffffff;
+            --text-muted: #b8b8d0;
+            --border-glow: rgba(138, 43, 226, 0.4);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image:
+                radial-gradient(circle at 10% 20%, rgba(138, 43, 226, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(0, 210, 255, 0.15) 0%, transparent 40%);
+            color: var(--text-main);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+            padding-bottom: 50px;
+        }
+
+        .profile-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--border-glow);
+            border-radius: 24px;
+            padding: 35px 20px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--secondary), var(--primary), var(--accent));
+        }
+
+        .logo-container {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 38px;
+            font-weight: 900;
+            color: #fff;
+            box-shadow: 0 0 25px rgba(0, 210, 255, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            letter-spacing: -2px;
+        }
+
+        .name-ar {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--text-main);
+        }
+
+        .name-en {
+            font-size: 16px;
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .tagline {
+            font-size: 14px;
+            color: var(--accent);
+            background: rgba(80, 200, 120, 0.1);
+            padding: 6px 14px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 15px;
+            border: 1px solid rgba(80, 200, 120, 0.3);
+            font-weight: 600;
+        }
+
+        .bio {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
+            max-width: 90%;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .social-btn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 14px 20px;
+            border-radius: 16px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .social-btn i {
+            font-size: 20px;
+        }
+
+        .social-btn.youtube {
+            border-color: rgba(255, 0, 0, 0.3);
+        }
+
+        .social-btn.youtube:hover {
+            background: rgba(255, 0, 0, 0.15);
+            border-color: #ff0000;
+            transform: translateY(-2px);
+        }
+
+        .social-btn.youtube i {
+            color: #ff0000;
+        }
+
+        .social-btn.instagram {
+            border-color: rgba(225, 48, 108, 0.3);
+        }
+
+        .social-btn.instagram:hover {
+            background: rgba(225, 48, 108, 0.15);
+            border-color: #e1306c;
+            transform: translateY(-2px);
+        }
+
+        .social-btn.instagram i {
+            color: #e1306c;
+        }
+
+        .social-btn.facebook {
+            border-color: rgba(24, 119, 242, 0.3);
+        }
+
+        .social-btn.facebook:hover {
+            background: rgba(24, 119, 242, 0.15);
+            border-color: #1877f2;
+            transform: translateY(-2px);
+        }
+
+        .social-btn.facebook i {
+            color: #1877f2;
+        }
+
+        .btn-content {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .projects-section {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            width: 100%;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-glow);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .project-info {
+            padding: 15px;
+        }
+
+        .project-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 6px;
+        }
+
+        .project-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .admin-box,
+        .delete-btn {
+            display: none !important;
+        }
+
+        body.is-admin .admin-box,
+        body.is-admin .delete-btn {
+            display: flex !important;
+        }
+
+        body.is-admin .admin-box {
+            flex-direction: column;
+        }
+
+        .admin-box {
+            background: rgba(138, 43, 226, 0.08);
+            border: 1px dashed var(--primary);
+            border-radius: 16px;
+            padding: 20px;
+            width: 100%;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .admin-box h3 {
+            font-size: 15px;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .form-control {
+            width: 100%;
+            background: rgba(11, 9, 20, 0.8);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 10px;
+            padding: 10px 14px;
+            color: var(--text-main);
+            font-size: 13px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            border-color: var(--secondary);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 70px;
+        }
+
+        .file-input-wrapper {
+            position: relative;
+            overflow: hidden;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .file-input-wrapper input[type=file] {
+            font-size: 100px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .file-btn {
+            display: block;
+            width: 100%;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            padding: 10px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-muted);
+            cursor: pointer;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #fff;
+            border: none;
+            padding: 12px;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: opacity 0.3s;
+            font-size: 14px;
+            box-shadow: 0 4px 12px rgba(138, 43, 226, 0.3);
+        }
+
+        .submit-btn:hover {
+            opacity: 0.9;
+        }
+
+        .delete-btn {
+            background: rgba(255, 0, 0, 0.2);
+            color: #ff6b6b;
+            border: 1px solid rgba(255,0,0,0.3);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.3s;
+        }
+
+        .delete-btn:hover {
+            background: rgba(255, 0, 0, 0.4);
+        }
+
+        footer {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 13px;
+            color: var(--text-muted);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 20px;
+            width: 100%;
+        }
+
+        .footer-socials {
+            display: flex;
+            gap: 15px;
+            font-size: 16px;
+        }
+
+        .footer-socials a {
+            color: var(--text-muted);
+            transition: color 0.3s;
+        }
+
+        .footer-socials a:hover {
+            color: var(--secondary);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="profile-card">
+            <div class="logo-container">MA</div>
+            <h1 class="name-ar">ملهم أحمد</h1>
+            <div class="name-en">Moulham Ahmad</div>
+            <div class="tagline">web & App Development | content creator</div>
+            <p class="bio">أشارك رحلتي في تطوير المواقع والتطبيقات من الأساسيات وحتى بناء مشاريع حقيقية</p>
+        </div>
+
+        <div class="social-links">
+            <a href="https://www.youtube.com/@MoulhammAhmad" target="_blank" rel="noopener noreferrer" class="social-btn youtube">
+                <div class="btn-content">
+                    <i class="fa-brands fa-youtube"></i>
+                    <span>قناة اليوتيوب</span>
+                </div>
+                <i class="fa-solid fa-chevron-left" style="font-size: 12px; opacity: 0.6;"></i>
+            </a>
+
+            <a href="https://www.instagram.com/mouham.ahmad1?stkn=MXA2MXZnZWF2engzNQ==" target="_blank" rel="noopener noreferrer" class="social-btn instagram">
+                <div class="btn-content">
+                    <i class="fa-brands fa-instagram"></i>
+                    <span>صفحة الانستغرام</span>
+                </div>
+                <i class="fa-solid fa-chevron-left" style="font-size: 12px; opacity: 0.6;"></i>
+            </a>
+
+            <a href="https://www.facebook.com/share/1BFCRRVY5h/" target="_blank" rel="noopener noreferrer" class="social-btn facebook">
+                <div class="btn-content">
+                    <i class="fa-brands fa-facebook"></i>
+                    <span>صفحة الفيسبوك</span>
+                </div>
+                <i class="fa-solid fa-chevron-left" style="font-size: 12px; opacity: 0.6;"></i>
+            </a>
+        </div>
+
+        <div class="projects-section">
+            <div class="section-title">
+                <i class="fa-solid fa-code"></i> معرض مشاريع البرمجة
+            </div>
+            <div class="projects-grid" id="projectsContainer"></div>
+        </div>
+
+        <div class="admin-box" id="adminBoxPanel">
+            <h3><i class="fa-solid fa-plus-circle"></i> لوحة التحكم: إضافة مشروع جديد</h3>
+            <input type="text" id="projectTitleInput" class="form-control" placeholder="عنوان المشروع (مثال: متجر إلكتروني)">
+            <textarea id="projectDescInput" class="form-control" placeholder="وصف مختصر عن المشروع وما تم إنجازه..."></textarea>
+            <div class="file-input-wrapper">
+                <div class="file-btn" id="fileLabelText">
+                    <i class="fa-solid fa-image"></i> اختر صور المشروع من المعرض
+                </div>
+                <input type="file" id="projectImageInput" accept="image/*">
+            </div>
+            <button class="submit-btn" onclick="addNewProject()">نشر المشروع في المعرض</button>
+        </div>
+
+        <footer>
+            <div class="footer-socials">
+                <a href="https://www.instagram.com/mouham.ahmad1?stkn=MXA2MXZnZWF2engzNQ==" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://www.youtube.com/@MoulhammAhmad" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-brands fa-youtube"></i>
+                </a>
+                <a href="https://www.facebook.com/share/1BFCRRVY5h/" target="_blank" rel="noopener noreferrer">
+                    <i class="fa-brands fa-facebook"></i>
+                </a>
+            </div>
+            <div>Moulham Ahmad. All Rights Reserved.</div>
+        </footer>
+    </div>
+
+    <script>
+        if (localStorage.getItem('moulham_admin_unlocked') === 'true') {
+            document.body.classList.add('is-admin');
+        } else {
+            const pass = prompt("أدخل كلمة المرور الخاصة بلوحة التحكم (إذا كنت أنت صاحب الموقع):");
+            if (pass === "M12&$@!?&34zx") {
+                localStorage.setItem('moulham_admin_unlocked', 'true');
+                document.body.classList.add('is-admin');
+            }
+        }
+
+        const imageInput = document.getElementById('projectImageInput');
+        const fileLabelText = document.getElementById('fileLabelText');
+
+        if (imageInput) {
+            imageInput.addEventListener('change', function () {
+                if (imageInput.files && imageInput.files[0]) {
+                    fileLabelText.innerHTML =
+                        `<i class="fa-solid fa-check" style="color:var(--accent)"></i> تم اختيار: ${imageInput.files[0].name}`;
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', loadProjects);
+
+        function loadProjects() {
+            const projectsContainer = document.getElementById('projectsContainer');
+            const savedProjects = JSON.parse(localStorage.getItem('moulham_projects')) || [];
+
+            projectsContainer.innerHTML = '';
+
+            if (savedProjects.length === 0) {
+                projectsContainer.innerHTML =
+                    `<p style="text-align:center; color:var(--text-muted); font-size:13px; padding:10px;">لم يتم إضافة مشاريع بعد.</p>`;
+                return;
+            }
+
+            savedProjects.forEach((proj, index) => {
+                const card = document.createElement('div');
+                card.className = 'project-card';
+
+                const img = document.createElement('img');
+                img.src = proj.image;
+                img.className = 'project-img';
+                img.alt = proj.title;
+
+                const info = document.createElement('div');
+                info.className = 'project-info';
+
+                const title = document.createElement('div');
+                title.className = 'project-title';
+                title.textContent = proj.title;
+
+                const desc = document.createElement('div');
+                desc.className = 'project-desc';
+                desc.textContent = proj.desc;
+
+                const deleteButton = document.createElement('button');
+                deleteButton.className = 'delete-btn';
+                deleteButton.innerHTML = '<i class="fa-solid fa-trash"></i> حذف المشروع';
+                deleteButton.onclick = () => deleteProject(index);
+
+                info.appendChild(title);
+                info.appendChild(desc);
+                info.appendChild(deleteButton);
+
+                card.appendChild(img);
+                card.appendChild(info);
+                projectsContainer.appendChild(card);
+            });
+        }
+
+        function addNewProject() {
+            const titleInput = document.getElementById('projectTitleInput');
+            const descInput = document.getElementById('projectDescInput');
+
+            const title = titleInput.value.trim();
+            const desc = descInput.value.trim();
+
+            if (!title || !desc || !imageInput.files[0]) {
+                alert('الرجاء إدخال عنوان المشروع، الوصف، واختيار صورة من المعرض.');
+                return;
+            }
+
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                const base64Image = e.target.result;
+
+                const newProject = {
+                    title: title,
+                    desc: desc,
+                    image: base64Image
+                };
+
+                const savedProjects = JSON.parse(localStorage.getItem('moulham_projects')) || [];
+                savedProjects.unshift(newProject);
+                localStorage.setItem('moulham_projects', JSON.stringify(savedProjects));
+
+                titleInput.value = '';
+                descInput.value = '';
+                imageInput.value = '';
+                fileLabelText.innerHTML = '<i class="fa-solid fa-image"></i> اختر صور المشروع من المعرض';
+
+                loadProjects();
+            };
+
+            reader.readAsDataURL(imageInput.files[0]);
+        }
+
+        function deleteProject(index) {
+            if (confirm('هل أنت متأكد من حذف هذا المشروع؟')) {
+                const savedProjects = JSON.parse(localStorage.getItem('moulham_projects')) || [];
+                savedProjects.splice(index, 1);
+                localStorage.setItem('moulham_projects', JSON.stringify(savedProjects));
+                loadProjects();
+            }
+        }
+    </script>
+</body>
+</html>
